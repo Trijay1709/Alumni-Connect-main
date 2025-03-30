@@ -34,8 +34,8 @@ function Login() {
     // Determine the API endpoint based on user type
     const url =
       userType === "alumni"
-        ? "http://192.168.83.147:8080/api/alumni/login" // Alumni login endpoint
-        : "http://192.168.83.147:8080/auth/login"; // User login endpoint
+        ? "http://localhost:8080/api/alumni/login" // Alumni login endpoint
+        : "http://localhost:8080/auth/login"; // User login endpoint
 
     try {
       const response = await fetch(url, {

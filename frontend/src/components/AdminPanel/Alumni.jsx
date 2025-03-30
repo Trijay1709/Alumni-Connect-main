@@ -8,9 +8,7 @@ const Alumni = () => {
   // Fetch the alumni data
   const fetchAlumni = async () => {
     try {
-      const response = await axios.get(
-        "http://192.168.83.147:8080/admin/alumni"
-      );
+      const response = await axios.get("http://localhost:8080/admin/alumni");
 
       // Log the full response to check the structure
       console.log("API Response:", response.data);
@@ -45,7 +43,7 @@ const Alumni = () => {
   // Function to handle verification
   const handleVerify = async (id) => {
     try {
-      await axios.put(`http://192.168.83.147:8080/admin/alumni/${id}/verify`);
+      await axios.put(`http://localhost:8080/admin/alumni/${id}/verify`);
       // Re-fetch the alumni list after verification
       fetchAlumni();
     } catch (error) {

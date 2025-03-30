@@ -42,7 +42,7 @@ const ScheduleEvent = ({ onCancel }) => {
     try {
       // POST request to create a new event
       const response = await axios.post(
-        "http://192.168.83.147:8080/api/events",
+        "http://localhost:8080/api/events",
         eventData
       );
 

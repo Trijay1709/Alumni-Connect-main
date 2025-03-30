@@ -23,7 +23,7 @@ const Messages = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://192.168.83.147:8080/api/user", {
+        const response = await fetch("http://localhost:8080/api/user", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${getAuthToken()}`,
@@ -51,7 +51,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const response = await fetch(
-          `http://192.168.83.147:8080/api/messages/${selectedUser._id}`,
+          `http://localhost:8080/api/messages/${selectedUser._id}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const Messages = () => {
 
     try {
       const response = await fetch(
-        `http://192.168.83.147:8080/api/messages/send/${selectedUser._id}`,
+        `http://localhost:8080/api/messages/send/${selectedUser._id}`,
         {
           method: "POST",
           headers: {

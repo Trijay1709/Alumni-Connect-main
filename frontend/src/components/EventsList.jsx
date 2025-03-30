@@ -10,9 +10,7 @@ const EventsList = () => {
     // Fetch events from backend API
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          "http://192.168.83.147:8080/api/events"
-        );
+        const response = await axios.get("http://localhost:8080/api/events");
         setEvents(response.data); // Update events state with fetched data
         setLoading(false);
       } catch (err) {

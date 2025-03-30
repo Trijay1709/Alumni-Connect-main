@@ -20,7 +20,7 @@ const EditProfilePopup = ({ onClose }) => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http:/192.168.83.147:8080/api/user/${userId}`
+          `http:/localhost:8080/api/user/${userId}`
         );
         setFormData({
           fullName: response.data.fullName || "",
@@ -50,10 +50,7 @@ const EditProfilePopup = ({ onClose }) => {
   const handleSave = async () => {
     try {
       // Make the PUT request to update the user profile
-      await axios.put(
-        `http://192.168.83.147:8080/api/user/${userId}`,
-        formData
-      );
+      await axios.put(`http:/:8080/api/user/${userId}`, formData);
       setError(null);
 
       // Save only the updated fullName (as a string) in localStorage

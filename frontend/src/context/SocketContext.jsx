@@ -15,7 +15,7 @@ export const SocketProvider = ({ children, userId }) => {
     }
 
     // Initialize socket connection
-    const newSocket = io("http://192.168.83.147:8080", {
+    const newSocket = io("http://localhost:8080", {
       withCredentials: true, // Optional: If you're using cookies or authentication
     });
 

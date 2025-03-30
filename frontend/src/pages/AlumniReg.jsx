@@ -49,7 +49,7 @@ function AlumniReg() {
 
     try {
       const response = await axios.post(
-        "http://192.168.83.147:8080/api/alumni/signup",
+        "http://localhost:8080/api/alumni/signup",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

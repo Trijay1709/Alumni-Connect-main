@@ -60,7 +60,7 @@ function StudentReg() {
 
     try {
       const response = await axios.post(
-        "http://192.168.83.147:8080/auth/signup",
+        "http://localhost:8080/auth/signup",
         formData,
         {
           headers: {
