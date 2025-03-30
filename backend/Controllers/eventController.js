@@ -24,6 +24,8 @@ const getEventById = async (req, res) => {
 // Create a new event
 const createEvent = async (req, res) => {
   try {
+    console.log("📥 Received event data:", req.body);
+    console.log("Received event data:", req.body);
     const { description, link, dateTime, category } = req.body;
     const newEvent = new Event({ description, link, dateTime, category });
     const savedEvent = await newEvent.save();

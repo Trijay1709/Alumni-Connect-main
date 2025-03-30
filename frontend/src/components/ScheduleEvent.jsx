@@ -100,7 +100,7 @@ const ScheduleEvent = ({ onCancel }) => {
         </button>
         <button
           onClick={handleSchedule}
-          className="bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600"
+          className="bg-primary text-text-primary py-2 px-4 rounded-lg"
         >
           Schedule Event
         </button>

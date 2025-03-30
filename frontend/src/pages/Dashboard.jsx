@@ -25,12 +25,14 @@ function Dashboard() {
   useEffect(() => {
     const user = localStorage.getItem("loggedInUser");
     const photo = localStorage.getItem("profilePhoto");
-    if (user) {
-      setLoggedInUser(user);
-    }
-    if (photo) {
-      setProfilePhoto(photo);
-    }
+    if (user) setLoggedInUser(user);
+    if (photo) setProfilePhoto(photo);
+
+    // Fetch events from backend
+    fetch("http://localhost:3000/api/events")
+      .then((response) => response.json())
+      .then((data) => setEvents(data))
+      .catch((error) => console.error("Error fetching events:", error));
   }, []);
 
   const handleLogout = () => {
@@ -43,27 +45,12 @@ function Dashboard() {
     }, 1000);
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const handleCardClick = (title) => setActiveCard(title);
+  const handleCancelForm = () => setActiveCard("");
 
-  const currentDate = new Date().toLocaleDateString();
-
-  const handleCardClick = (title) => {
-    setActiveCard(title);
-    if (title === "Events") {
-      setActiveSection("events");
-    }
-    if (title === "Network") {
-      setActiveSection("network");
-    }
-    if (title === "Open Source") {
-      setActiveSection("open-source");
-    }
-  };
-
-  const handleCancelForm = () => {
-    setActiveCard("");
+  const addEvent = (newEvent) => {
+    setEvents((prevEvents) => [...prevEvents, newEvent]);
   };
 
   // Render content based on the active section
@@ -113,12 +100,6 @@ function Dashboard() {
 
       <div className="col-span-8 rounded-lg min-h-fit pt-4">
         <div className="flex justify-between items-center gap-8 px-4">
-          {/* <div className="flex flex-col justify-center">
-            <h1 className="text-3xl font-outfit font-bold text-secondary typewriter">
-              Welcome, {loggedInUser}
-            </h1>
-            <p className="text-[#023074cd]">{currentDate}</p>
-          </div> */}
           <div className="relative mx-auto w-96">
             <input
               type="text"
@@ -132,65 +113,30 @@ function Dashboard() {
         {/* Render the main content based on active section */}
         {renderContent()}
 
-        {/* Conditionally render the selected form below the cards */}
         <div className="mt-8 px-4">
-          {activeCard === "Schedule an Event" && (
-            <ScheduleEventForm onCancel={handleCancelForm} />
-          )}
-          {activeCard === "Host a Mentorship" && (
-            <HostMentorshipForm onCancel={handleCancelForm} />
-          )}
-          {activeCard === "Job Openings" && (
-            <JobOpeningsForm onCancel={handleCancelForm} />
-          )}
+          {activeCard === "Schedule an Event" && <ScheduleEventForm onCancel={handleCancelForm} onEventAdded={addEvent} />}
+          {activeCard === "Host a Mentorship" && <HostMentorshipForm onCancel={handleCancelForm} />}
+          {activeCard === "Job Openings" && <JobOpeningsForm onCancel={handleCancelForm} />}
         </div>
       </div>
 
-      <div className="col-span-2 flex justify-center px-4 pt-4 ">
+      <div className="col-span-2 flex justify-center px-4 pt-4">
         <div className="relative flex flex-col items-center">
-          <button
-            onClick={toggleDropdown}
-            className="flex items-center space-x-2 focus:outline-none"
-          >
-            {/* <span className="font-outfit font-bold text-secondary">
-              <p className="text-primary underline" onClick={toggleDropdown}>
-                Edit Profile
-              </p>
-            </span> */}
-            {profilePhoto ? (
-              <img
-                src={profilePhoto}
-                alt="Profile"
-                className="w-12 h-12 rounded-xl"
-              />
-            ) : (
-              <img
-                src={assets.Profile}
-                alt="Profile"
-                className="w-12 h-12 rounded-xl"
-              />
-            )}
+          <button onClick={toggleDropdown} className="flex items-center space-x-2 focus:outline-none">
+            <span className="font-outfit font-bold text-secondary">
+              <p className="text-primary underline">Edit Profile</p>
+            </span>
+            <img src={profilePhoto || assets.Profile} alt="Profile" className="w-12 h-12 rounded-xl" />
           </button>
           {isDropdownOpen && (
             <div className="absolute right-0 mt-10 w-46 bg-white bg-opacity-25 rounded-md shadow-lg z-20">
-              <button
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                onClick={() => setIsEditProfileOpen(true)}
-              >
-                Update Profile
-              </button>
-              <button
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
+              <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={() => setIsEditProfileOpen(true)}>Update Profile</button>
+              <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={handleLogout}>Logout</button>
             </div>
           )}
         </div>
       </div>
 
-      {/* Render the EditProfilePopup if open */}
       {isEditProfileOpen && <EditProfilePopup onClose={() => setIsEditProfileOpen(false)} />}
     </div>
   );
