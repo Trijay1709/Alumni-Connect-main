@@ -43,7 +43,7 @@ function Header() {
       >
         <img
           src={AboutImage}
-          alt="About Alumni Connect"
+          alt="About Campus Bridge"
           
         />
       </div>

@@ -7,9 +7,10 @@ export default {
   theme: {
     extend: {
       colors:{
-        'primary':'#FF8403',
-        'secondary':'#022F74',
-        'custom-blue': '#EAEFFF'
+        'primary': '#1a1a1a', // Dark Gray for primary elements
+        'secondary': '#333333', // Slightly lighter dark gray for secondary elements
+        'text-primary': '#ffffff', // White for primary text
+        'text-secondary': '#cccccc', // Light gray for secondary text
       },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],

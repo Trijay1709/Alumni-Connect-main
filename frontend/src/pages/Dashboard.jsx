@@ -113,12 +113,12 @@ function Dashboard() {
 
       <div className="col-span-8 rounded-lg min-h-fit pt-4">
         <div className="flex justify-between items-center gap-8 px-4">
-          <div className="flex flex-col justify-center">
+          {/* <div className="flex flex-col justify-center">
             <h1 className="text-3xl font-outfit font-bold text-secondary typewriter">
               Welcome, {loggedInUser}
             </h1>
             <p className="text-[#023074cd]">{currentDate}</p>
-          </div>
+          </div> */}
           <div className="relative mx-auto w-96">
             <input
               type="text"
@@ -152,11 +152,11 @@ function Dashboard() {
             onClick={toggleDropdown}
             className="flex items-center space-x-2 focus:outline-none"
           >
-            <span className="font-outfit font-bold text-secondary">
+            {/* <span className="font-outfit font-bold text-secondary">
               <p className="text-primary underline" onClick={toggleDropdown}>
                 Edit Profile
               </p>
-            </span>
+            </span> */}
             {profilePhoto ? (
               <img
                 src={profilePhoto}

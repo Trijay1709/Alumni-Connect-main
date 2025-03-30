@@ -27,7 +27,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         />
       </div>
 
-      <ul className="text-[#2B64BB] mt-5">
+      <ul className="text-black mt-5">
         <li
           className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer ${
             activeSection === "dashboard" ? "bg-[#F2F3FF] border-r-4 border-primary" : ""
@@ -81,7 +81,7 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
           <br />
           <br />
           <br />
-        <li
+        {/* <li
           className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer ${
             activeSection === "settings" ? "bg-[#F2F3FF] border-r-4 border-primary" : ""
           }`}
@@ -89,15 +89,15 @@ const Sidebar = ({ setActiveSection, activeSection }) => {
         >
           <Settings />
           <p>Settings</p>
-        </li>
+        </li> */}
 
-        <button
+        {/* <button
           className="flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 text-red-500 cursor-pointer"
           onClick={handleLogout}
         >
           <LogOut />
           <p>Logout</p>
-        </button>
+        </button> */}
       </ul>
     </div>
   );
