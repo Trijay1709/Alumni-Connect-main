@@ -24,12 +24,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    usn: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
     fieldOfStudy: {
       type: String,
       required: true,

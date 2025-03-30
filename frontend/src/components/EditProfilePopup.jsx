@@ -7,7 +7,6 @@ const EditProfilePopup = ({ onClose }) => {
     fullName: "",
     graduationYear: "",
     course: "",
-    usn: "",
     fieldOfStudy: "",
   });
   const [error, setError] = useState(null);
@@ -25,8 +24,6 @@ const EditProfilePopup = ({ onClose }) => {
         setFormData({
           fullName: response.data.fullName || "",
           graduationYear: response.data.graduationYear || "",
-          course: response.data.course || "",
-          usn: response.data.usn || "",
           fieldOfStudy: response.data.fieldOfStudy || "",
         });
         setIsLoading(false);
@@ -108,16 +105,6 @@ const EditProfilePopup = ({ onClose }) => {
                   type="text"
                   name="course"
                   value={formData.course}
-                  onChange={handleInputChange}
-                  className="border rounded-lg px-3 py-2 w-full"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium">USN</label>
-                <input
-                  type="text"
-                  name="usn"
-                  value={formData.usn}
                   onChange={handleInputChange}
                   className="border rounded-lg px-3 py-2 w-full"
                 />

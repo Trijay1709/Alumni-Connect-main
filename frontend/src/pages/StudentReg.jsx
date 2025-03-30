@@ -10,7 +10,6 @@ function StudentReg() {
   const [graduationYear, setGraduationYear] = useState("");
   const [collegeEmail, setCollegeEmail] = useState("");
   const [course, setCourse] = useState("");
-  const [usn, setUsn] = useState("");
   const [fieldOfStudy, setFieldOfStudy] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
@@ -29,7 +28,6 @@ function StudentReg() {
       !graduationYear ||
       !collegeEmail ||
       !course ||
-      !usn ||
       !fieldOfStudy ||
       !linkedin ||
       !github ||
@@ -50,7 +48,6 @@ function StudentReg() {
     formData.append("graduationYear", graduationYear);
     formData.append("collegeEmail", collegeEmail);
     formData.append("course", course);
-    formData.append("usn", usn);
     formData.append("fieldOfStudy", fieldOfStudy);
     formData.append("linkedin", linkedin);
     formData.append("github", github);
@@ -150,20 +147,6 @@ function StudentReg() {
               value={course}
               onChange={(e) => setCourse(e.target.value)}
               placeholder="Enter your course"
-              className="border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="usn" className="text-gray-600 mb-2">
-              USN
-            </label>
-            <input
-              type="text"
-              id="usn"
-              name="usn"
-              value={usn}
-              onChange={(e) => setUsn(e.target.value)}
-              placeholder="Enter your USN"
               className="border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>

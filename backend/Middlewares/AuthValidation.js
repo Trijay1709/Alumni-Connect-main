@@ -26,10 +26,6 @@ const signupValidation = (req, res, next) => {
       "string.empty": "Course is required",
       "string.min": "Course must be at least 2 characters long",
     }),
-    usn: Joi.string().min(8).required().messages({
-      "string.empty": "USN is required",
-      "string.min": "USN must be at least 8 characters long",
-    }),
     fieldOfStudy: Joi.string().min(3).required().messages({
       "string.empty": "Field of Study is required",
       "string.min": "Field of Study must be at least 3 characters long",
